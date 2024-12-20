@@ -150,11 +150,11 @@ macro_rules! signed_float_impl {
     };
 }
 
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 signed_float_impl!(f16);
 signed_float_impl!(f32);
 signed_float_impl!(f64);
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 signed_float_impl!(f128);
 
 /// Computes the absolute value.

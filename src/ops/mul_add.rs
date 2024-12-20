@@ -34,7 +34,7 @@ pub trait MulAddAssign<A = Self, B = Self> {
     fn mul_add_assign(&mut self, a: A, b: B);
 }
 
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 #[cfg(any(feature = "std", feature = "libm"))]
 impl MulAdd<f16, f16> for f16 {
     type Output = Self;
@@ -65,7 +65,7 @@ impl MulAdd<f64, f64> for f64 {
     }
 }
 
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 #[cfg(any(feature = "std", feature = "libm"))]
 impl MulAdd<f128, f128> for f128 {
     type Output = Self;
@@ -92,7 +92,7 @@ macro_rules! mul_add_impl {
 mul_add_impl!(MulAdd for isize i8 i16 i32 i64 i128);
 mul_add_impl!(MulAdd for usize u8 u16 u32 u64 u128);
 
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 #[cfg(any(feature = "std", feature = "libm"))]
 impl MulAddAssign<f16, f16> for f16 {
     #[inline]
@@ -117,7 +117,7 @@ impl MulAddAssign<f64, f64> for f64 {
     }
 }
 
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 #[cfg(any(feature = "std", feature = "libm"))]
 impl MulAddAssign<f128, f128> for f128 {
     #[inline]
@@ -184,12 +184,12 @@ mod tests {
             };
         }
 
-        #[cfg(has_f16)]
+        #[cfg(feature = "f16")]
         test_mul_add!(f16);
 
         test_mul_add!(f32 f64);
 
-        #[cfg(has_f128)]
+        #[cfg(feature = "f128")]
         test_mul_add!(f128);
     }
 }

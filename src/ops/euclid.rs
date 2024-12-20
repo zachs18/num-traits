@@ -88,18 +88,18 @@ macro_rules! euclid_forward_impl {
 euclid_forward_impl!(isize i8 i16 i32 i64 i128);
 euclid_forward_impl!(usize u8 u16 u32 u64 u128);
 
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 #[cfg(feature = "std")]
 euclid_forward_impl!(f16);
 
 #[cfg(feature = "std")]
 euclid_forward_impl!(f32 f64);
 
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 #[cfg(feature = "std")]
 euclid_forward_impl!(f128);
 
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 #[cfg(not(feature = "std"))]
 impl Euclid for f16 {
     #[inline]
@@ -166,7 +166,7 @@ impl Euclid for f64 {
     }
 }
 
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 #[cfg(not(feature = "std"))]
 impl Euclid for f128 {
     #[inline]
@@ -310,12 +310,12 @@ mod tests {
             };
         }
 
-        #[cfg(has_f16)]
+        #[cfg(feature = "f16")]
         test_euclid!(f16);
 
         test_euclid!(f32 f64);
 
-        #[cfg(has_f128)]
+        #[cfg(feature = "f128")]
         test_euclid!(f128);
     }
 

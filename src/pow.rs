@@ -182,15 +182,15 @@ mod float_impls {
     use super::Pow;
     use crate::Float;
 
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f16, i8, i32, <f16 as Float>::powi);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f16, u8, i32, <f16 as Float>::powi);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f16, i16, i32, <f16 as Float>::powi);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f16, u16, i32, <f16 as Float>::powi);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f16, i32, i32, <f16 as Float>::powi);
     pow_impl!(f32, i8, i32, <f32 as Float>::powi);
     pow_impl!(f32, u8, i32, <f32 as Float>::powi);
@@ -202,32 +202,32 @@ mod float_impls {
     pow_impl!(f64, i16, i32, <f64 as Float>::powi);
     pow_impl!(f64, u16, i32, <f64 as Float>::powi);
     pow_impl!(f64, i32, i32, <f64 as Float>::powi);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, i8, i32, <f128 as Float>::powi);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, u8, i32, <f128 as Float>::powi);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, i16, i32, <f128 as Float>::powi);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, u16, i32, <f128 as Float>::powi);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, i32, i32, <f128 as Float>::powi);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f16, f16, f16, <f16 as Float>::powf);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f32, f16, f32, <f32 as Float>::powf);
     pow_impl!(f32, f32, f32, <f32 as Float>::powf);
-    #[cfg(has_f16)]
+    #[cfg(feature = "f16")]
     pow_impl!(f64, f16, f64, <f64 as Float>::powf);
     pow_impl!(f64, f32, f64, <f64 as Float>::powf);
     pow_impl!(f64, f64, f64, <f64 as Float>::powf);
-    #[cfg(all(has_f16, has_f128))]
+    #[cfg(all(feature = "f16", feature = "f128"))]
     pow_impl!(f128, f16, f128, <f128 as Float>::powf);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, f32, f128, <f128 as Float>::powf);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, f64, f128, <f128 as Float>::powf);
-    #[cfg(has_f128)]
+    #[cfg(feature = "f128")]
     pow_impl!(f128, f128, f128, <f128 as Float>::powf);
 }
 

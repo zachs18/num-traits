@@ -17,7 +17,7 @@ pub trait Inv {
     fn inv(self) -> Self::Output;
 }
 
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 impl Inv for f16 {
     type Output = f16;
     #[inline]
@@ -39,7 +39,7 @@ impl Inv for f64 {
         1.0 / self
     }
 }
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 impl Inv for f128 {
     type Output = f128;
     #[inline]
@@ -47,7 +47,7 @@ impl Inv for f128 {
         1.0 / self
     }
 }
-#[cfg(has_f16)]
+#[cfg(feature = "f16")]
 impl<'a> Inv for &'a f16 {
     type Output = f16;
     #[inline]
@@ -69,7 +69,7 @@ impl<'a> Inv for &'a f64 {
         1.0 / *self
     }
 }
-#[cfg(has_f128)]
+#[cfg(feature = "f128")]
 impl<'a> Inv for &'a f128 {
     type Output = f128;
     #[inline]
